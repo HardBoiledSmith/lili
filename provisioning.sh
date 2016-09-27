@@ -37,16 +37,19 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get -y install gdebi-core
 
 cd ~/debian_packages
-gdebi -n -q g++-4.8_4.8.4-2ubuntu1-14.04.3_amd64.deb
-gdebi -n -q libpython2.7-dev_2.7.6-8ubuntu0.2_amd64.deb
-gdebi -n -q git_1.9.1-1ubuntu0.3_amd64.deb
-gdebi -n -q nginx_1.4.6-1ubuntu3.5_all.deb
-gdebi -n -q python-pip_1.5.4-1ubuntu4_all.deb
-gdebi -n -q zlib1g-dev_1.2.8.dfsg-1ubuntu1_amd64.deb
+gdebi -n -q build-essential_12.1ubuntu2_amd64.deb
+gdebi -n -q g++-5_5.4.0-6ubuntu1-16.04.2_amd64.deb
+gdebi -n -q libpython3.5-dev_3.5.2-2-16.04_amd64.deb
+gdebi -n -q git_2.7.4-0ubuntu1_amd64.deb
+gdebi -n -q nginx_1.10.0-0ubuntu0.16.04.2_all.deb
+gdebi -n -q python3-pip_8.1.1-2ubuntu0.2_all.deb
+gdebi -n -q python3-setuptools_20.7.0-1_all.deb
+gdebi -n -q zlib1g_1.2.8.dfsg-2ubuntu4_amd64.deb
 
 cd ~/python_packages
-pip install Django-1.10.1.tar.gz
-pip install uwsgi-2.0.13.1.tar.gz
+pip3 install --upgrade pip
+pip3 install Django-1.10.1.tar.gz
+pip3 install uwsgi-2.0.13.1.tar.gz
 
 echo -e "##############################\nLINE NUMBER: "$LINENO"\n##############################"
 
