@@ -7,7 +7,7 @@ Lili is a Vagrant provisioning script for [Johanna](https://github.com/addnull/j
 	Max OS X                        : 10.12
 	VirtualBox                      : 5.1.6
 	Vagrant                         : 1.8.5
-	Ubuntu 14.04 Trusty Vagrant Box : 20160926.0.0
+	Ubuntu 16.04 Xenial Vagrant Box : 20160926.0.0
 
 # How To Play
 
