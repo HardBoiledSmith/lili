@@ -19,7 +19,7 @@ cp -R /vagrant/python_packages ~/
 
 echo "root:1234qwer" | chpasswd
 
-sed -i 's/^PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/^PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 service ssh restart
 
 echo -e "##############################\nLINE NUMBER: "$LINENO"\n##############################"
