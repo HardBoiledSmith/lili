@@ -45,6 +45,7 @@ gdebi -n -q nginx_1.10.0-0ubuntu0.16.04.2_all.deb
 gdebi -n -q python3-pip_8.1.1-2ubuntu0.2_all.deb
 gdebi -n -q python3-setuptools_20.7.0-1_all.deb
 gdebi -n -q zlib1g_1.2.8.dfsg-2ubuntu4_amd64.deb
+gdebi -n -q erlang-redis-client_1.0.8-1_amd64.deb
 
 cd ~/python_packages
 pip3 install --upgrade pip
@@ -53,6 +54,36 @@ pip3 install uwsgi-2.0.13.1.tar.gz
 pip3 install awscli-1.10.67.tar.gz
 pip3 install awsebcli-3.7.8.tar.gz
 pip3 install colorama-0.3.7.tar.gz
+pip3 install PyYAML-3.12.tar.gz
+pip3 install Twisted-16.4.1.tar.bz2
+pip3 install arrow-0.8.0.tar.gz
+pip3 install asgi_redis-0.14.1.tar.gz
+pip3 install asgiref-0.14.0.tar.gz
+pip3 install autobahn-0.16.0.tar.gz
+pip3 install blessed-1.14.1.tar.gz
+pip3 install botocore-1.4.58.tar.gz
+pip3 install cement-2.10.2.tar.gz
+pip3 install channels-0.17.2.tar.gz
+pip3 install daphne-0.15.0.tar.gz
+pip3 install django-compat-1.0.13.tar.gz
+pip3 install docker-py-1.10.3.tar.gz
+pip3 install dockerpty-0.4.1.tar.gz
+pip3 install docopt-0.6.2.tar.gz
+pip3 install docutils-0.12.tar.gz
+pip3 install future-0.15.2.tar.gz
+pip3 install jmespath-0.9.0.tar.gz
+pip3 install msgpack-python-0.4.8.tar.gz
+pip3 install pathspec-0.5.0.tar.gz
+pip3 install python-dateutil-2.5.3.tar.gz
+pip3 install redis-2.10.5.tar.gz
+pip3 install requests-2.11.1.tar.gz
+pip3 install semantic_version-2.6.0.tar.gz
+pip3 install six-1.10.0.tar.gz
+pip3 install texttable-0.8.5.tar.gz
+pip3 install txaio-2.5.1.tar.gz
+pip3 install wcwidth-0.1.7.tar.gz
+pip3 install websocket_client-0.37.0.tar.gz
+pip3 install zope.interface-4.3.2.tar.gz
 
 echo -e "##############################\nLINE NUMBER: "$LINENO"\n##############################"
 
@@ -87,7 +118,7 @@ do
 done
 
 cd /opt/johanna
-cp env.py.sample env.py
+cp config.json.sample config.json
 
 echo -e "##############################\nLINE NUMBER: "$LINENO"\n##############################"
 
