@@ -41,7 +41,7 @@ gdebi -n -q build-essential_12.1ubuntu2_amd64.deb
 gdebi -n -q g++-5_5.4.0-6ubuntu1-16.04.2_amd64.deb
 gdebi -n -q libpython3.5-dev_3.5.2-2-16.04_amd64.deb
 gdebi -n -q git_2.7.4-0ubuntu1_amd64.deb
-gdebi -n -q nginx_1.10.0-0ubuntu0.16.04.2_all.deb
+gdebi -n -q nginx_1.10.0-0ubuntu0.16.04.4_all.deb
 gdebi -n -q python3-pip_8.1.1-2ubuntu0.2_all.deb
 gdebi -n -q python3-setuptools_20.7.0-1_all.deb
 gdebi -n -q zlib1g_1.2.8.dfsg-2ubuntu4_amd64.deb
