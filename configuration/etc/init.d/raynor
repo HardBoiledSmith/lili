@@ -1,61 +1,67 @@
 #!/bin/bash
+#
+# uwsgi - this script starts and stops the uwsgi daemon
+#
+# chkconfig:   - 85 15
+# Description:  Start/stop uwsgi process(es)
 
-### BEGIN INIT INFO
-# Provides:          uwsgi
-# Required-Start:    $local_fs $remote_fs $network
-# Required-Stop:     $local_fs $remote_fs $network
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: Start/stop uwsgi process(es)
-# Description:       Start/stop uwsgi process(es)
-### END INIT INFO
+. /etc/init.d/functions
 
-DAEMON="/usr/local/bin/uwsgi"
-INIFILE="/etc/uwsgi/raynor.ini"
-NAME="raynor"
-PIDFILE="/tmp/raynor.pid"
+daemon="/usr/local/bin/uwsgi"
+prog=$(basename $daemon)
+inifile="/etc/uwsgi/raynor.ini"
+name="raynor"
+lockfile="/var/lock/subsys/raynor"
+pidfile="/tmp/raynor.pid"
 
-. /lib/lsb/init-functions
-
-do_start() {
-    echo "Starting $NAME"
-    start-stop-daemon --start --quiet --pidfile $PIDFILE --exec $DAEMON -- --ini $INIFILE 2>/dev/null || return 0
+start() {
+    echo "Starting $name"
+    daemon $daemon --ini $inifile
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
 }
 
-do_stop() {
-    echo "Stopping $NAME"
-    start-stop-daemon --stop --quiet --signal 3 --retry 2 --exec $DAEMON
+stop() {
+    echo "Stopping $name"
+    killproc -p $pidfile $prog
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
 }
 
-do_reload() {
-    echo "Reloading $NAME"
-    start-stop-daemon --stop --quiet --signal HUP --exec $DAEMON
+restart() {
+    stop
+    start
 }
 
-do_status() {
-    echo "Status of $NAME"
-    status_of_proc -p $PIDFILE "$DAEMON" "$NAME" && exit 0 || exit $?
+rh_status() {
+    echo "Status of $name"
+    status $prog
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
 }
 
 case "$1" in
     start)
-        do_start
+        rh_status_q && exit 0
+        $1
         ;;
     stop)
-        do_stop
+        rh_status_q || exit 0
+        $1
         ;;
     restart)
-        do_stop
-        do_start
-        ;;
-    reload)
-        do_reload
+        $1
         ;;
     status)
-        do_status
+        rh_$1
         ;;
     *)
-        echo $"Usage: $0 {start|stop|restart|reload|status}"
+        echo $"Usage: $0 {start|stop|restart|status}"
         exit 2
-        ;;
 esac
