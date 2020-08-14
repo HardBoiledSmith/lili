@@ -1,4 +1,4 @@
-Django==2.2.9
+Django==2.2.13
 asgi_redis==1.4.3
 boto3==1.9.73
 channels==2.1.6
